@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        #ps{
+            width:100%;
+            height: 100%;
+            position: relative;
+        }
+        #ps li{
+            position: absolute;
+            box-shadow: 0 0 10px gray;
+            transition: all 1s;
+        }
+        #ps li.selected{
+            top:50% !important;
+            left:50% !important;
+
+            transform:rotate(0deg) translate(-50%,50%)  scale(1.5) !important;
+            z-index: 99;
+
+
+        }
+    </style>
+    <script src="js/underscore-min.js">
+    </script>
+    <script>
+        var pw=250;
+        var ph=360;
+        window.onload=function(){
+           // 0.获取ul和窗口的高和宽
+            var ps=document.getElementById("ps");
+            var sh=document.documentElement.clientHeight;
+            var sw=document.documentElement.clientWidth;
+            // 1.动态向ul中添加li并添加图片
+            for(var i=0;i<10;i++)
+            {
+               // 创建li
+                var li=document.createElement('li');
+                // 设置li的样式
+               li.style.width=pw+'px';
+               li.style.height=ph+'px';
+               li.style.left=_.random(0,sw-pw)+'px';
+               li.style.top=_.random(0,sh-ph)+'px';
+               li.style.transform='rotate('+_.random(0,360)+'deg)';
+               // 创建img并设计样式
+               var pic=document.createElement('img');
+               pic.src='images/'+(1+i)+".jfif";
+               pic.style.width=pw+'px';
+               pic.style.height=ph+'px';
+               // 加入页面
+               li.appendChild(pic);
+               ps.appendChild(li);
+            }
+            // 获取页面中的li
+            var lis=document.getElementById('ps').children;
+            // 遍历li，添加点击的事件监听器
+            for(var i=0;i<lis.length;i++)
+            {
+                var myli=lis[i];
+                myli.onclick=function(){
+                    for(var j=0;j<lis.length;j++)
+                    {
+                        lis[j].className='';
+                    }
+                    this.className='selected';
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<ul id="ps">
+
+</ul>
+</body>
+</html>

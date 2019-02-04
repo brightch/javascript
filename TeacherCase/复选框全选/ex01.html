@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复选框的全选效果设计</title>
+	<script>
+		
+		function selectAll()
+		{
+			cs=document.getElementsByTagName('input');
+			select=cs[0].checked;
+			for(var i=0;i<cs.length;i++)
+			{
+				cs[i].checked=select;
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<h2>选择兴趣爱好</h2>
+		<input type="checkbox" onclick="selectAll()">全选<br>
+		<hr>
+		<input type="checkbox">听音乐<br>
+		<input type="checkbox">读书<br>
+		<input type="checkbox">运动<br>
+		<input type="checkbox">美食<br>
+
+
+	</div>
+</body>
+</html>

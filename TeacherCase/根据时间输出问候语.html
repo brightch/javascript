@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>问候</title>
+	<script>
+     function SayHello(){
+     	var year,month,day,hour,minute,second;
+     	var d=new Date();
+     	this.year=d.getFullYear();
+     	this.month=d.getMonth()+1;
+     	this.day=d.getDate();
+     	this.hour=d.getHours();
+     	this.minute=d.getMinutes();
+     	this.second=d.getSeconds();
+     	this.show=function(){
+
+     	if(this.hour<11)
+     	{
+     		this.msg="早上好！";
+     	}else{
+     		if(this.hour<14)
+     		{
+     			this.msg='中午好';
+     		}else{
+     			if(this.hour<19){
+                   this.msg="下午好";
+     			}else{
+     				this.msg='晚上好';
+     			}
+     		}
+     	}
+
+
+     document.write('今天是'+this.year+'年'+this.month+'月'+this.day+'日'+this.hour+":"+this.minute+":"+this.second+","+this.msg);
+          }
+ }
+    var sh=new SayHello();
+    sh.show();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

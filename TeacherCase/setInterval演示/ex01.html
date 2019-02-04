@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>setInterval演示</title>
+	
+</head>
+<body>
+	<div  id="d1" style='font-size: 30px'></div>
+	<input type="text" id="txt">
+	<button type="button" onclick="start()">act</button>
+	<script>
+	    var num=1;
+	    var tn;
+	    var time;
+	  
+		function show()
+		{
+			// console.log(document.getElementById('d1').innerHTML);
+			document.getElementById('d1').innerHTML=num;
+			
+
+			if(num==0)
+			{
+				clearInterval(time);
+				document.getElementById('d1').innerHTML='时间到！';
+			}
+			num--;
+		}
+		  function start(){
+    	time=setInterval('show()',1000);
+    	tn=parseInt(document.getElementById('txt').value);
+    	num=tn;
+    }
+	</script>
+</body>
+</html>

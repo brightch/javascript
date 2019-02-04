@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab选项卡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+       #tab{
+           width:600px;
+           height:300px;
+           border:1px solid green;
+           box-shadow: 5px 5px 5px gray;
+           margin:100px auto;
+       }
+        #tab #tab_head ul{
+            background: #e8e8e8;
+            display: flex;
+            justify-content: space-around;
+        }
+        #tab #tab_head ul li{
+            height: 40px;
+            line-height: 40px;
+            align-items: center;
+            /*border:1px solid red;*/
+            text-align: center;
+            cursor: pointer;
+            width:25%;
+        }
+        .headselected{
+            background: #fff;
+
+            font-weight: bold;
+        }
+        #tab #tab_content div{
+            height: 240px;
+            padding:10px;
+
+        }
+
+    </style>
+    <script>
+        window.onload=function()
+        {
+            var tul=document.getElementById('tab_head_top');
+            var lis=tul.getElementsByTagName('li');
+            var ds=document.getElementById('tab_content');
+            var dds=ds.getElementsByTagName('div');
+            for(var i=0;i<lis.length;i++)
+            {
+                var obj=lis[i];
+                obj.index=i;
+
+                obj.onmouseover=function()
+                {
+                    for(var j=0;j<lis.length;j++)
+                    {
+                        lis[j].className='';
+                    }
+                    this.className='headselected';
+                    for(var k=0;k<dds.length;k++)
+                    {
+                        dds[k].style.display='none';
+                    }
+                    dds[this.index].style.display='block';
+
+
+                }
+            }
+        }
+
+    </script>
+</head>
+<body>
+<div id="tab">
+    <div id="tab_head">
+        <ul id="tab_head_top">
+            <li class="headselected">头条</li>
+            <li>国家大事</li>
+            <li>财经</li>
+            <li>科技</li>
+        </ul>
+    </div>
+    <div id="tab_content">
+        <div style="display:block">头条内容</div>
+        <div style="display: none">国家大事内容</div>
+        <div style="display: none">财经信息</div>
+        <div style="display: none">科技咨询</div>
+    </div>
+</div>
+</body>
+</html>

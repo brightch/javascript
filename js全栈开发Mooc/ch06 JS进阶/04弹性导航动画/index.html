@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹性导航</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #ffaaaa;
+
+        }
+        #box{
+            width:1200px;
+            height: 100px;
+            border-radius: 10px;
+            background: #fff;
+            margin:100px auto;
+            position: relative;
+        }
+        #box ul{
+            /*此处相对布局，才可以是span的背景在文字后面显示*/
+            position: relative;
+        }
+        #box ul li{
+            list-style: none;
+            float:left;
+            font-size: 20px;
+            width:100px;
+            text-align: center;
+            line-height: 100px;
+            cursor: pointer;
+        }
+        #bg{
+            position: absolute;
+
+            background: url(images/bg.png);
+            width:100px;
+            height: 50px;
+            left:0;
+            top:25px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // 1.获取所需标签
+            // 1.1获取span标签
+            var sp=$('box').children[0];
+            // 1.2获取li的标签集合
+            var lis=$('box').children[1].children;
+            var beginX=0;//记录鼠标点击的标签位置
+            for(var i=0;i<lis.length;i++)
+            {
+                var li=lis[i];
+                // 鼠标移入，缓动的终点就是当前的li位置
+                li.onmouseover=function(){
+                    end=this.offsetLeft
+                }
+                // 鼠标移出，缓动的终点就是之前记录的鼠标点击位置，若未点击，终点就是0
+                li.onmouseout=function(){
+                    end=beginX;
+                }
+                // 鼠标点击，记录点击的位置，以便移出的时候，缓动终点
+                li.onmousedown=function () {
+                   beginX=this.offsetLeft;
+                }
+            }
+
+            // ch07缓动动画
+            var begin=0,end=0;
+            setInterval(function(){
+                begin=begin+(end-begin)*0.1;
+                $('bg').style.left=begin+'px';
+            },10)
+        }
+
+        function $(id)
+        {
+            return typeof id==="string"?document.getElementById(id):null;
+        }
+    </script>
+</head>
+<body>
+  <div id="box">
+      <span id="bg"></span>
+      <ul>
+          <li>首页</li>
+          <li>服装</li>
+          <li>数码</li>
+          <li>游戏</li>
+          <li>图书</li>
+          <li>美食</li>
+          <li>电器</li>
+          <li>家装</li>
+          <li>家具</li>
+          <li>影视</li>
+          <li>家具</li>
+          <li>影视</li>
+      </ul>
+  </div>
+</body>
+</html>

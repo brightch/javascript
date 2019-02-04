@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>
+var card=['A','2','3','4','5','6','7','8','9','10','J','Q','K'];
+var one=[],two=[],temp=[];
+var queue=[];
+var c1,c2,c3,pos1,pos2;
+var rand=1;
+for(var i=0;i<10;i++)
+{
+	var index=Math.floor(Math.random()*13)
+	one[i]=card[index];
+}
+
+for(var i=0;i<10;i++)
+{
+	var index=Math.floor(Math.random()*13)
+	two[i]=card[index];
+}
+document.write('初始状态<br>');
+document.write(one.toString());
+document.write("<br>");
+document.write(two.toString());
+document.write("<br>");
+while(one.length>0 && two.length>0)
+{
+   	document.write('<br>第'+rand+"轮<br>");
+   		rand++;
+   	while(true){
+
+		c1=one.shift();
+		document.write('one 出牌:'+c1);
+		queue.push(c1);
+		show(queue,one,two);
+		pos1=queue.indexOf(c1);
+		if(pos1>=0 && pos1<queue.length-1)
+		{
+		   temp=queue.splice(pos1,queue.length);
+		   document.write('one 收牌：'+temp.toString());
+		   one=one.concat(temp);
+		   show(queue,one,two);
+		}else{
+			break;
+		}
+	}
+		while(true){
+		c1=two.shift();
+		document.write('two 出牌:'+c1);
+		queue.push(c1);
+		show(queue,one,two);
+		pos1=queue.indexOf(c1);
+		if(pos1>=0 && pos1<queue.length-1)
+		{
+		   temp=queue.splice(pos1,queue.length);
+		    document.write('two 收牌：'+temp.toString());
+		   two=two.concat(temp);
+		   show(queue,one,two);
+		}else{
+			break;
+		}
+	}
+}
+if(one.length==0)
+{
+	document.write('one lost');
+}else{
+	document.write('tow lost');
+}
+function show(c,o,t)
+{
+   document.write('<br>=======当前每人牌状态和牌堆状态===<br>');
+   document.write('one 的牌：'+o.toString()+"<br>");
+   document.write('two 的牌：'+t.toString()+"<br>");
+   document.write('牌堆的牌：'+c.toString()+"<br>");
+   document.write('<br>================================<br>')
+   	
+}
+</script>
+</head>
+
+<body>
+</body>
+</html>

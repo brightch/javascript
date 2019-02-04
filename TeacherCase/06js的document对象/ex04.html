@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie操作</title>
+	<style>
+      img{
+      	position: absolute;
+      	top:30px;
+      	left:30px;
+
+      }
+	</style>
+	<script>
+	var step=5;
+	var dir=1;
+	 function move()
+     {
+          var pic=document.getElementById('pic1');
+          var pl=pic.offsetLeft;
+          var pt=pic.offsetTop;
+          // pic.style.left=t+5+'px';
+          // alert(window.event.keyCode);
+          var code=window.event.keyCode;
+          if(code==37){
+              pic.style.left=pl-step+'px';
+              pic.style.transform='rotateY(180deg)';
+          }
+          if(code==38){
+          	   pic.style.top=pt-step+'px';
+          }
+          if(code==39){
+          	  pic.style.left=pl+step+'px';
+          	  pic.style.transform='rotateY(0deg)';
+
+          	  // pic.style.transform='rotateZ(180deg) rotateY(90deg)'
+          	  // pic.style.transform='rotateY(90deg)'
+          }
+          if(code==40){
+          	  pic.style.top=pt+step+'px';
+          }
+
+     }
+     // function setdir(olddir,newdir)
+     // {
+     //       if(olddir==newdir)
+     //       	return;
+     //        var pic=document.getElementById('pic1');
+     // }
+     window.onkeydown=move;
+ 
+
+	</script>
+</head>
+<body>
+   <img id="pic1" src="images/t1.gif" width="150px" height="200px" alt="">
+   <input type="button" value="下" onclick="down()">
+   <input type="button" value="上" onclick="up()">
+   <input type="button" value="左" onclick="left()">
+   <input type="button" value="右" onclick="right()">
+</body>
+</html>

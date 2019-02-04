@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球自动移动</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #box{
+            width:100%;
+            height: 100%;
+            position: relative;
+        }
+        #ball{
+            width:100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(gray, black);
+            position: absolute;
+            left:100px;
+            top:100px;
+        }
+    </style>
+    <script>
+        var beginx=100;
+        var beginy=100;
+        var endx=100;
+        var endy=100;
+        window.onload=function()
+        {
+            // 缓动动画基本原理：
+            // 1.设计定时器函数
+            // 2.每次修正begin位置
+            // 3.在其他函数中设定缓动的终点end位置
+            setInterval(function(){
+                var ball=$('ball');
+                // x方向的缓动
+                beginx=beginx+(endx-beginx)*0.1;
+                // y方向的缓动
+                beginy=beginy+(endy-beginy)*0.1;
+                // 设置目标的xy新位置
+                ball.style.left=beginx+'px';
+                ball.style.top=beginy+'px';
+                console.log('bx='+beginx+',by='+beginy);
+            },10);
+
+        }
+        function $(id){
+            return typeof id==='string'?document.getElementById(id):null;
+        }
+
+        // 根据鼠标移动设定缓动的目标位置
+        window.onmousemove=function(){
+            var e=window.event;
+            endx=e.x;
+            endy=e.y;
+            console.log('x='+e.x+',y='+e.y);
+
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div id="ball"></div>
+</div>
+</body>
+</html>

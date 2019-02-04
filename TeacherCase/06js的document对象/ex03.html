@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie操作</title>
+	<style>
+     input[type=text]{
+     	width:150px;
+     	height: 30px;
+     	font-size: 20px;
+     }
+     input[type=button]
+     {
+     	margin-top:10px;
+        width:100px;
+        height: 25px;
+     }
+	</style>
+	<script>
+      function wc()
+      {
+           var v=f1.t1.value;
+           alert(v);
+           document.cookie='ct='+v;
+   //         var date=new Date(); 
+			// var expireDays=10; 
+			// //将date设置为10天以后的时间 
+			// date.setTime(date.getTime()+expireDays*24*3600*1000);
+			// document.cookie="expire="+date.toGMTString(); 
+			// alert('成功写入cookie！');
+			alert(document.cookie);
+      }
+      function rc()
+      {
+      	  var cooks=document.cookie;
+
+      	  alert(cooks);
+      	  if(cooks!=""){
+      	  var cs=cooks.split('=');
+      	  f1.t1.value=cs[1];
+      	}
+      }
+      window.onload=rc;
+      	</script>
+</head>
+<body>
+ <form action="" name="f1">
+	 <input  type="text" name="t1" id=""><br>
+	 <input type="button" value="写入cookie" onclick="wc()">
+	 <input type="button" value="删除cookie">
+	 </form>
+</body>
+</html>

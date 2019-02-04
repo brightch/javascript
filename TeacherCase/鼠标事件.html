@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标事件</title>
+	<script>
+
+      function mm()
+      {
+      	 var e=window.event;
+      	 document.getElementById('d1').innerHTML='x='+e.x+',y='+e.y;
+      }
+      function closeme()
+      {
+       //  if(confirm('关闭窗口？'))
+      	// window.close();
+      	window.open('http://www.baidu.com')
+      }
+      function mmi()
+      {
+
+      	 var e=window.event;
+      	 var obj=e.srcElement;
+      	 obj.style.width='100%';
+      	 obj.style.height='100%';
+      	 obj.style.opacity=1;
+      }
+            function mmo()
+      {
+
+      	 var e=window.event;
+      	 var obj=e.srcElement;
+      	 obj.style.width='80%';
+      	 obj.style.height='80%';
+      	 obj.style.opacity=0.5;
+      }
+      window.onmousemove=mm;
+	</script>
+	<style>
+      img{
+      	width:80%;
+      	height: 80%;
+      	opacity: 0.5;
+      }
+	</style>
+</head>
+<body>
+	<input type="button" value="xxx" onclick="closeme()" >
+	<div id="d1"></div>
+	<img src="images/1.jpg" alt="" onmouseover="mmi()" onmouseout="mmo()">
+	<img src="images/2.jpg" alt="" name="pic">
+
+</body>
+</html>  

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打字效果-3</title>
+	<script>
+		msg=['Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发',
+		'Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发',
+		'Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发']
+		var arrlen=msg.length; //字符串数组的长度
+		var arrindex=0;
+		var index=0;
+		var speed=100;
+		function msgtype()
+		{
+			var i,j;
+			index++;
+			str=""; //存储当前需要输出的全部内容
+			//输出前面的arrindex个字符串
+			for(i=0;i<arrindex;i++)
+			{
+				str+=msg[i]+"\n";
+			}
+			//拼接需要字符串的部分内容
+			str+=msg[arrindex].substring(0,index)+"_";
+			frm.ta.value=str;//输出
+			// console.log('abc');
+			// 判断当前字符串是否输出完成
+			// 如果输出完成，字符串索引+1，表示要输出下一个字符串，并且停止2s
+			if(index>=msg[arrindex].length)
+			{
+				index=0;
+				arrindex=(arrindex+1)%3;
+				setTimeout('msgtype()',2000);
+
+			}else{
+				setTimeout('msgtype()',speed);
+			}
+		}
+	</script>
+</head>
+<body onload="msgtype()">
+	<form action="" name='frm'>
+		<textarea name='ta' style="border:1px solid red;font-size: 20px;line-height:30px" name="ta" id="" cols="100" rows="10"></textarea>
+			
+
+		</textarea>
+	</form>
+</body>
+</html>

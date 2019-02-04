@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+/*每个图片实际占用宽度为202px*/
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#main{
+
+    position: relative;
+}
+/*图片统一宽度*/
+.pic img{
+    vertical-align: top;
+    width:165px;
+}
+/*浮动，并且每个图片之间的空隙padding实现*/
+.box{
+    float: left;
+    padding: 10px 0 0 15px;
+}
+/*图片与边框之间的距离*/
+.pic{
+  padding:10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

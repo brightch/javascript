@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>浮动图片</title>
+	<style>
+	.fd{
+		position: absolute;
+		width:162px;
+		height: 326px;
+		left:200px;
+		top:100px;
+		border:1px solid red;
+		
+	}	
+
+	</style>
+
+</head>
+<body onload="startTime()">
+    <!-- <button type="button" onclick="move()">move</button> -->
+	<div class="fd" id="adv" onmouseover="stopTime()" onmouseout="startTime()" ><img id="pic" src="images/adv.jpg" alt=""></div>
+	<script>
+	
+		 var adv=document.getElementById('adv');
+     	 var x=150,y=100;
+		 adv.style.left=x+'px';
+		 adv.style.top=y+'px';	
+		 var delay=10;
+		 var dx=1,dy=1;
+		function move()
+		{
+			//窗口宽度和高度
+			var windowwidth=document.documentElement.clientWidth;
+			var windowheight=document.documentElement.clientHeight;
+			//div的宽度和高度
+			var advWidth=adv.offsetWidth;
+			var advheight=adv.offsetHeight;
+			// 判断是否改变方向
+			if(x>=windowwidth-advWidth ||x<=0)
+			{
+				dx*=-1;
+			}
+			if(y>=windowheight-advheight ||y<=0)
+			{
+				dy*=-1;
+			}
+		    x+=1*dx;
+		    y+=1*dy;
+		    //设置div的left和top属性
+		    adv.style.left=x+'px';
+		    adv.style.top=y+'px';
+		}
+		var time;
+        function stopTime()
+        {
+        	clearInterval(time);
+        }
+        function startTime(){
+        	time=setInterval('move()',delay);
+        }
+	</script>
+</body>
+</html>

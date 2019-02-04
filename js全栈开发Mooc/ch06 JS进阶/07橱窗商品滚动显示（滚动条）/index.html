@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>橱窗滚动效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        /*整体容器*/
+        #box{
+            width:1000px;
+            height: 230px;
+            border: 1px solid #ddd;
+            margin:100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        /*图片格式*/
+        #box img{
+            width:180px;
+            height: 180px;
+            padding:10px;
+        }
+        /*图片容器设定宽度，以便可以滚动*/
+        #box ul{
+            position: absolute;
+            width:3000px;
+        }
+        /*图片浮动*/
+        #box ul li{
+            float:left;
+
+        }
+        #box_bottom{
+            width:100%;
+            height: 30px;
+            position: absolute;
+            bottom:0px;
+            background: #ddd;
+        }
+        .mask{
+            position: absolute;
+            left:0;
+            top:0;
+
+            height: 30px;
+            background-color: orangered;
+
+            border-radius: 12px;
+            cursor: pointer;
+
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            // 1.获取需要的标签
+            var box=document.getElementById("box");
+            var box_top=box.children[0];
+            var box_bottom=box.children[1];
+            var lis=box_top.children;
+            var mask=box_bottom.children[0];
+
+            // 2.设置滚动条的宽度
+            // 滚动条宽度=（盒子宽度/内容宽度）*盒子的宽度
+            var mask_len=(box.offsetWidth/box_top.offsetWidth)*box.offsetWidth;
+            mask.style.width=mask_len+'px';
+
+            // 3.鼠标的操作
+            mask.onmousedown=function () {
+                var e=window.event;
+                var offsetleft=e.clientX-mask.offsetLeft;
+                mask.onmousemove=function(){
+                    var e1=window.event;
+                    var x=e1.clientX-offsetleft;
+                    if(x<=0) x=0;
+                    if(x>=box_bottom.offsetWidth-mask.offsetWidth)
+                        x=box_bottom.offsetWidth-mask.offsetWidth;
+                    mask.style.left=x+'px';
+                    box_top.style.left=-x*(box_top.offsetWidth/box.offsetWidth)+'px';
+                    return false;
+                };
+                mask.onmouseup=function(){
+                    mask.onmousemove=null;
+                }
+            }
+
+        };
+    </script>
+</head>
+<body>
+<div id="box">
+    <ul id="box_top">
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+        <li><img src="images/5.jpg" alt=""></li>
+        <li><img src="images/6.jpg" alt=""></li>
+        <li><img src="images/7.jpg" alt=""></li>
+        <li><img src="images/8.jpg" alt=""></li>
+        <li><img src="images/9.jpg" alt=""></li>
+        <li><img src="images/10.jpg" alt=""></li>
+        <li><img src="images/11.jpg" alt=""></li>
+        <li><img src="images/12.jpg" alt=""></li>
+        <li><img src="images/13.jpg" alt=""></li>
+        <li><img src="images/14.jpg" alt=""></li>
+        <li><img src="images/15.jpg" alt=""></li>
+    </ul>
+    <div id="box_bottom"><span class="mask"></span></div>
+</div>
+</body>
+</html>

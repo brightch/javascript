@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装缓动动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+         } 
+         #box{
+             width: 100px;
+             height: 100px;
+             position: absolute;
+             background-color: #add;
+         }
+     </style> 
+    <script>
+        window.onload=function(){
+            $('btn').onclick=function (ev) { bufferMove($('box'),1500,800); }
+            $('btn2').onclick=function (ev) { bufferMove($('box'),100,100); }
+        }
+       function $(id)
+       {
+           return typeof id==='string'?document.getElementById(id):null;
+       }
+        function bufferMove(obj,targetX,targetY)
+        {
+            // 1.1清除定时器
+            clearTimeout(obj.timer);
+            // 1.2定义定时器
+            obj.timer=setInterval(function () {
+                // 1.3求出步长
+                var stepX=(targetX-obj.offsetLeft)*0.1;
+                // var stepY=(targetY-obj.offsetTop)*0.1;
+                console.log('1取整前spepx='+stepX);
+                // 取整
+                stepX=(targetX>obj.offsetLeft)?Math.ceil(stepX):Math.floor(stepX);
+                // stepY=(targetY>obj.offsetTop)?Math.ceil(stepY):Math.floor(stepY);
+                console.log('2取整后spepx='+stepX);
+                // console.log('3before:'+obj.offsetLeft);
+                // console.log('3.5 :'+(obj.offsetLeft+stepX)+'px');
+                // 1.4动起来
+                obj.style.left=(obj.offsetLeft+stepX)+'px';
+
+                // obj.style.top=(obj.offsetTop+stepY)+'px';
+                console.log('4after:'+obj.offsetLeft);
+                obj.innerHTML=obj.offsetLeft+","+obj.offsetTop;
+                //2.到达目的地，停止缓动
+                (obj.offsetLeft+stepX)+'px'
+            },20);
+        }
+    </script>
+</head>
+<body>
+<button id="btn">move</button>
+<button id="btn2">move</button>
+<div id="box"></div>
+</body>
+</html>

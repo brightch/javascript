@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>九宫格</title>
+    <style>
+        /*总容器的样式*/
+        #box{
+            position: relative;
+        }
+        /*图片大小设置*/
+        img{
+            width: 150px;
+            height: 210px;
+             }
+        /*海报的基本样式*/
+        .item{
+            width: 150px;
+            height: 260px;
+            background: #c8c8c8;
+            margin:10px 10px 0  0;
+        }
+        /*海报下的两个段落的基本样式*/
+        p{
+            text-align: center;
+            /*border:1px solid red;*/
+            margin:4px 0;
+            font-size: 14px;
+        }
+
+         /*最后一个段落红色*/
+        .item p:nth-last-child(1){
+            color:red;
+        }
+
+
+    </style>
+    <script>
+        window.onload=function()
+        {
+            // 获取按钮对象数组
+            var btns=document.getElementsByTagName('button');
+            // 对每个数组编写事件响应代码
+            btns[0].onclick=function()
+            {
+               show(3)
+            }
+            btns[1].onclick=function()
+            {
+                show(4)
+            }
+            btns[2].onclick=function()
+            {
+                show(5)
+            }
+        }
+        function show(n)
+        {
+            // picw：图片宽度，pich图片高度，sw间隔宽度，sh间隔高度
+            var picw=150,pich=260,sw=10,sh=10;
+            // 列数
+            var k=n;
+            // 获取所有海报对象
+            var boxs=document.getElementById("box").children;
+            // 遍历对象，计算每个对象所在行和列，并计算绝对位置
+            for(var j=0;j<boxs.length;j++)
+            {
+                var x=Math.floor(j/k);
+                var y=j%k;
+                var box=boxs[j];
+                box.style.position='absolute';
+                box.style.left=160*y+"px";
+                box.style.top=270*x+"px";
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="top">
+    <button>3列</button>
+    <button>4列</button>
+    <button>5列</button>
+</div>
+<div id="box">
+    <div class="item">
+        <img src="images/1.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/2.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/3.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/4.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/5.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/6.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/7.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/8.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/9.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/10.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/11.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/12.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/13.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/14.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/15.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/16.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/17.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/18.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/19.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+    <div class="item">
+        <img src="images/20.jpg" alt="">
+        <p>超市空</p>
+        <p>好看的电影</p>
+    </div>
+
+</div>
+</body>
+</html>

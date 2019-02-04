@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+     *{
+     	margin:0;
+     	padding:0;
+     }
+     .menu{
+     	margin:0 auto;
+     	/*border:1px solid red;*/
+     	height: 42px;
+     	width:1022px;
+     	border-top:1px solid gray;
+     	border-bottom: 1px solid gray;
+     }
+     .menu li{
+     	list-style: none;
+     	float:left;
+     	width:144px;
+     	height: 42px;
+     	line-height: 42px;
+     	text-align: center;
+     	font-size: 28pxd     	
+     	font-family: "黑体";
+     	border-right:2px solid gray;
+     	cursor: pointer;
+     }
+     .menu li:nth-last-child(1){
+     	border-right:0;
+     }
+     .menu li:hover{
+     	color:red;
+     	background-image: url(images/bg.gif);
+     	background-position: center bottom;
+     	font-weight: bold;
+     }
+     .twomenu li{
+       float:left;
+       height: 40px;
+       padding-right:15px;
+       border: 1px;
+       list-style: none;
+       line-height: 40px;
+       position: relative;
+     }
+	</style>
+	<script>
+	   var pad=[130,230,400,540,700,840,950];
+       function show(n)
+       {
+          init();
+          var d=document.getElementById('tm');
+          var obj=d.children[n-1];
+          obj.style.display='block';
+          obj.style.paddingLeft=pad[n-1]+'px';
+         
+
+       }
+      function init()
+      {
+          var d=document.getElementById('tm');
+          var len=d.children.length;
+          // alert(len);
+          for(var i=0;i<len;i++)
+          {
+          	d.children[i].style.display='none';
+          }
+          // d.style.display='none';
+      }
+	</script>
+</head>
+<body onload="init()">
+<ul class="menu">
+<li onmouseover="show(1)">首页</li>
+<li onmouseover="show(2)">爱情片</li>
+<li onmouseover="show(3)">动作片</li>
+<li onmouseover="show(4)">科幻片</li>
+<li onmouseover="show(5)">恐怖片</li>
+<li onmouseover="show(6)">文艺片</li>
+<li onmouseover="show(7)">动漫</li>
+</ul>
+<div class="twomenu" id="tm">
+<ul >
+	<li>欢迎来到365影视网</li>
+</ul>
+<ul>
+	<li>爱情喜剧</li>
+	<li>古典爱情</li>
+	<li>现代爱情</li>
+</ul>
+<ul>
+<li>枪战片</li><li>武侠片</li><li>魔幻片</li>
+</ul><ul>
+<li>外星人</li><li>自然灾难</li><li>生物变异</li>
+</ul><ul>
+<li>惊悚片</li><li>恐怖片</li><li>悬疑片</li>
+</ul><ul>
+<li>音乐片</li><li>歌舞片</li><li>纪录片</li>
+</ul><ul>
+<li>历史动漫</li><li>搞笑动漫</li><li>英雄动漫</li>
+</ul>
+</div>
+</body>
+</html>

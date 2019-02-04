@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>复选框选中效果</title>
+<style type="text/css">
+table {
+	width: 400px;
+	margin-top: 5px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	border-top:1px solid #666666;
+	border-left:1px solid #666666;
+}
+td{
+	font-size:12px;
+	line-height:25px;
+	text-align:center;
+	border-right:1px solid #666666;
+	border-bottom:1px solid #666666;
+}
+</style>
+<script type="text/javascript">
+function all_check(){
+	var oInput=document.getElementsByName("ic");
+ 		for (var i=0;i<oInput.length;i++){
+ 			if (document.getElementById("all").checked==true){
+ 				oInput[i].checked=true;
+ 				}
+ 			else {
+ 				oInput[i].checked=false;
+ 				}
+ 			}
+	}
+
+function single_check(){
+var oInput=document.getElementsByName("ic");
+var j=0;
+  for(var i=0;i<oInput.length;i++){
+ 	  if (oInput[i].checked==true){
+ 		   j=j+1;
+ 		 }
+	}
+
+   if(j==oInput.length){
+	   document.getElementById("all").checked=true;
+	  }
+   else{
+	   document.getElementById("all").checked=false;
+	 }
+}
+function show()
+{
+	var sum=0;
+	var num,price;
+  	for(var i=1;i<=2;i++)
+	{
+		var chk=document.getElementById("c"+i);
+		if(chk.checked){
+		num=parseInt(document.getElementById("ts"+i).innerHTML);
+		price=parseInt(document.getElementById("tj"+i).innerHTML);
+		
+		sum+=num*price;}
+	}
+	alert("你选中的商品总金额为："+sum);
+}
+</script>
+</head>
+
+<body><table border="0" cellspacing="0" cellpadding="0">
+  <tr style=" font-weight:bold; ">
+    <td><input id="all" type="checkbox" value="全选" onclick="all_check()" />全选</td>
+    <td>产品名称</td>
+    <td>价格（元）</td>
+    <td>数量</td>
+  </tr>
+  <tr>
+    <td><input name="ic" id="c0" type="checkbox" value="诺基亚" onclick="single_check()" /></td>
+    <td>诺基亚N85手机</td>
+    <td>2589</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td><input name="ic"  id="c1" type="checkbox" value="佳能" onclick="single_check()" /></td>
+    <td>佳能IXUS95ISY数码相机</td>
+    <td id="ts1">1865</td>
+    <td id="tj1">5</td>
+  </tr>
+  <tr>
+    <td><input name="ic"  id="c2" type="checkbox" value="戴尔"  onclick="single_check()"/></td>
+    <td>戴尔新版SK8115键盘</td>
+    <td id="ts2">60</td>
+    <td id="tj2">56</td>
+  </tr>
+  <tr>
+    <td><input name="ic" type="checkbox" value="联想" onclick="single_check()" /></td>
+    <td>联想折叠式笔记本电脑桌</td>
+    <td>59</td>
+    <td>10</td>
+  </tr>
+   <tr>
+    <td><input name="ic" type="checkbox" value="康佳" onclick="single_check()" /></td>
+    <td>康佳32英寸液晶电视</td>
+    <td>2945</td>
+    <td>3</td>
+  </tr>
+   <tr>
+    <td><input name="ic" type="checkbox" value="九阳"  onclick="single_check()"/></td>
+    <td>九阳JYDX-78D五谷系列豆浆机</td>
+    <td>299</td>
+    <td>8</td>
+  </tr>
+   <tr>
+    <td colspan="4" style="text-align:left; font-weight:bold; padding-left:15px;">删除选中的产品 
+    <input type="button" value="提交" onclick="show()" />
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

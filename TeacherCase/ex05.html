@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dom操作</title>
+	<script>
+		function show()
+		{
+			var bd=document.body;
+			//alert(bd.children.length);
+			var d1=document.getElementById('d1');
+			//d1.children[0].innerHTML="常用网站";
+			//d1.firstElementChild.innerHTML="常用网站";
+			// d1.lastElementChild.children[1].children[2].children[0].innerHTML="陕西交通职业技术学院";
+		}
+	</script>
+</head>
+<body>
+	<h2>DOM操作演示</h2>
+	<div id="d1">
+		<h3 id="h3">标题3节点</h3>
+		<div class="content">
+			<h4>分类</h4>
+			<ul>
+				<li><a href="http://www.baidu.com">百度</a></li>
+				<li><a href="http://www.jd.com">京东</a></li>
+				<li><a href="http://www.scct.cn">陕西交院</a></li>
+			</ul>
+		</div>
+
+	</div>
+	<button type="button" onclick="show()">操作</button>
+</body>
+</html>

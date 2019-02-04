@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打字效果显示</title>
+	<script>
+		var msg="Spyder是Python(x,y)的作者为它开发的一个简单的集成开发环境。和其他的Python开发";
+		var len=msg.length;
+		// alert(len);
+		var pos=0,index=0;
+		var speed=100;
+		function msgtype() {
+			 index++;
+			 submsg=msg.substring(0,index)+"_";
+			 frm.msg.value=submsg;
+			 console.log('index='+index);
+			 console.log('speed='+speed);
+			 if(index>=len)
+			 {
+			 	index=0;
+			 	 setTimeout('msgtype()',2000);
+			 }else{
+			  setTimeout('msgtype()',speed);
+			  }	
+			
+
+		}
+
+
+	</script>
+</head>
+<body onload="msgtype()">
+<form action="" name="frm">
+	<input style="width:800px;height:30px;font-size: 20px;line-height: 30px;border: 2px solid red;" type="text" name="msg">
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>4个图片轮换显示的横幅广告</title>
+<script type="text/javascript">
+  var NowFrame = 1;  //设置显示的第一个图片
+  var MaxFrame = 4;  //设置显示图片的个数
+ function show() {
+	for(var i=1;i<=MaxFrame;i++){
+		if(NowFrame==i)
+			document.getElementById("adv"+NowFrame).style.display='block';  //当前显示图片
+		else
+			document.getElementById("adv"+i).style.display='none';
+		}
+	if(NowFrame == MaxFrame)  //判断当前图片是否是最后一个，如果是则从第一个重新轮回显示
+	   NowFrame = 1;
+	else
+		NowFrame++;	 //设置下一个显示的图片		
+}
+theTimer=setInterval('show()', 3000);   //设置定时器，显示下一个图片				
+</script>
+</head>
+
+<body onload="show()"><img src="images/class1-1.jpg" id="adv1" style="display:none;">
+<img src="images/class1-2.jpg" id="adv2" style="display:none;">
+<img src="images/class1-3.jpg" id="adv3" style="display:none;">
+<img src="images/class1-4.jpg" id="adv4" style="display:none;">
+</body>
+</html>

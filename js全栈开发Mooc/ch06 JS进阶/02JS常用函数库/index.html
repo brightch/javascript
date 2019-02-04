@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="js/underscore-min.js"></script>
+<script>
+    var dataArr=['张三','b',true,3,4.5,10];
+    // http://www.css88.com/doc/underscore/#each
+    // 使用each函数遍历数组
+    _.each(dataArr,function(item,index,arr)
+    {
+        console.log(item,index,arr);
+    })
+    console.log(_.without(dataArr,'张三'))
+    // 返回4-10之间的随机证书
+    console.log(_.random(4,10));
+</script>
+</body>
+</html>

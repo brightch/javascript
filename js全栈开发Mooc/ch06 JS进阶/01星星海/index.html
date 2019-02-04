@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星星海</title>
+    <!--设计思路：-->
+    <!--1.页面黑色背景，使用span作为星星的容器-->
+    <!--2.星星作为span的背景。span绝对布局-->
+    <!--3.设置星星闪烁动画。-->
+    <!--4.使用js脚本添加星星，使用页面横纵距离进行随机放置，随机大小。-->
+    <!--5.光标悬浮设置hover伪类为旋转，并提升优先级-->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            
+        }
+        body{
+            background: #000;
+            /*position: relative;*/
+        }
+        /*设置span显示星星的样式*/
+        span{
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: url(images/star.png);
+            background-size: cover;
+            animation: flash 3s infinite;
+
+        }
+        /*光标悬浮式动画需要在hover中设置transition*/
+        span:hover{
+           transform:scale(1.5) rotate(180deg) !important;
+            transition: all 1s;
+        }
+         @keyframes flash{
+             0%{
+                 opacity: 0;
+             }
+             50%{
+                 opacity:1
+             }
+             100%{
+                 opacity: 0;
+             }
+         }
+    </style>
+    <script>
+        window.onload=function() {
+            var screenH = document.documentElement.clientHeight;
+            var screenW=document.documentElement.clientWidth;
+            console.log('sh='+screenH);
+            console.log('sw='+screenW);
+            for(var i=0;i<200;i++)
+            {
+                var st=Math.floor(Math.random()*screenH);
+                var sl=Math.floor(Math.random()*screenW);
+                var s=document.createElement('span');
+
+                s.style.left=sl+'px';
+                s.style.top=st+'px';
+                s.style.transform='scale('+Math.random()*2 +')';
+                s.style.animationDelay=Math.random()*3+'s';
+                document.body.appendChild(s);
+                
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+<span></span>
+</body>
+</html>

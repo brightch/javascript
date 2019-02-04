@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+            border:0;
+        }
+        /*灰色的进度条轮廓*/
+        #progress{
+            width: 1000px;
+            height: 35px;
+            line-height: 35px;
+            margin:100px auto;
+            /*background-color: #e8e8e8;*/
+            position: relative;
+        }
+        #progress_bar{
+            width: 900px;
+            height: 100%;
+
+
+            background-color: #ccc;
+            border-radius: 10px;
+            position: relative;
+        }
+        #progress_bar_fg{
+            width: 0px;
+            height: 100%;
+
+
+            background-color: orangered;
+            border-radius: 10px 0 0 10px;
+            position: relative;
+        }
+        /*手柄*/
+        span{
+            position: absolute;
+            width:25px;
+            height: 55px;
+            background: orangered;
+            left:0px;
+            top:-10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #progress_value{
+            position: absolute;
+            right:40px;
+            top:3px;
+        }
+    </style>
+    <script>
+    window.onload=function(){
+        // 1.获取需要的标签
+        var progress=document.getElementById('progress');
+        var progress_bar=progress.children[0];
+        var progress_value=progress.children[1];
+        var progress_bar_fg=progress_bar.children[0];
+        var mask=progress_bar.children[1];
+
+        // 2.监听鼠标按下
+        mask.onmousedown=function(){
+            var e=window.event;
+            // 2.1获取初始位置,也就是进度条最左端距离窗口的距离。
+            var offsetleft=e.clientX-mask.offsetLeft;
+            // console.log(mask.offsetLeft);
+            // 监听鼠标移动
+            document.onmousemove=function()
+            {
+                var e=window.event;
+                // 计算鼠标位置的相对位置，就是以进度条最左端为基准的相对位置
+                var x=e.clientX-offsetleft;
+                // 限制拖动块的移动左右端位置
+                if(x<=0)
+                    x=0;
+                if(x>=progress_bar.offsetWidth-mask.offsetWidth)
+                    x=progress_bar.offsetWidth-mask.offsetWidth;
+                // 让色条与拖动块同步变化
+                progress_bar_fg.style.width=x+'px';
+                mask.style.left=x+'px';
+                // 计算百分比
+                var pcent=Math.floor(x*100/(progress_bar.offsetWidth-mask.offsetWidth));
+                progress_value.innerHTML=pcent+'%';
+                //鼠标按下和抬起的事件冲突。
+                return false;
+            }
+            document.onmouseup=function (ev) {
+                // 当鼠标抬起，取消鼠标移动的事件代码
+                document.onmousemove=null;
+            }
+        }
+
+    }
+
+
+    </script>
+</head>
+<body>
+<!--整体的容器-->
+<div id="progress">
+    <!--整体的滚动条（灰色-->
+    <div id="progress_bar">
+        <!--选中的橙色部分-->
+        <div id="progress_bar_fg"></div>
+        <!--可拖动的手柄-->
+        <span></span>
+    </div>
+    <div id="progress_value">0%</div>
+</div>
+</body>
+</html>

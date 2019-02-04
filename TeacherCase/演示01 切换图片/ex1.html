@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script type="text/javascript">
+<!--
+
+function show()
+{
+   var item3=document.getElementsByTagName("img");
+   alert(item3(0).getAttribute("src"));
+   item3(0).src="images/grape.jpg";
+   
+  // item(0).setAttribute("src","images/grape.jpg");
+}
+//-->
+</script>
+<body>
+<p><img src="images/fruit.jpg" width="205" height="201" />
+</p>
+<div id="d1">
+  <div id="d2">
+     <a href="#">dddddddd</a>
+     <a href="#">eeeeeee</a>
+  </div>
+</div>
+<p>
+  <label>
+    <input type="button" name="button" id="button" onclick="show()" value="按钮" />
+  </label>
+</p>
+
+<table width="200" border="1">
+  <thead>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+    </tr>
+  </thead>
+  
+  <tbody>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+  </tbody>
+  
+  <tfoot>
+  <tr>
+    <td>5</td>
+    <td>6</td>
+    </tr>
+  </tfoot>
+  
+</table><br />
+  <input type="button" name="button" id="button" onclick="show2()" value="按钮" />
+  <script type="text/javascript">
+<!--
+
+function show2()
+{
+  var item1=document.getElementsByTagName("table");
+  alert(item1(0).children.length);
+  alert(item1(0).children(0).children(0).children(0).innerHTML);
+   alert(document.all.d1.children(0).children(0).innerHTML);
+}
+//-->
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!--children对象数组元素示例 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<body> 
+  <table   id="tbl">   
+  <tbody> <tr> <td>行1列1</td><td>行1列2</td></tr>   
+  <tr> <td>行2列1 </td><td>行2列2 </td></tr> 
+  </tbody> 
+  </table>   
+  <input   onclick="alert(document.all.tbl.children(0).children(0).innerHTML)"   value="children(0)"   type="button">   
+  <input   onclick="alert(document.all.tbl.children(0).children(1).innerHTML)"   value="children(1)"   type="button">   
+  <input   onclick="alert(document.all.tbl.children(0).children(1).children(0).innerHTML)"   value="children(2)"   type="button"> 
+  <div   id=test>   
+  <a></a>   
+  <table></table>   
+  </div>   
+
+  <script>   
+  alert(tb1.children[0].tagName)   
+  alert(test.children[1].tagName)   
+  </script>   
+
+</body> 
+</html>

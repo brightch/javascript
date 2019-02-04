@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简化微博</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        #box{
+            width:600px;
+            border:1px solid gray;
+            margin:30px auto;
+            padding:30px;
+        }
+        .box-top{
+            width:600px;
+
+        }
+      #ul li{
+          border-bottom: 1px dashed gray;
+          color:green;
+          height: 30px;
+
+      }
+        #ul li a{
+            float:right;
+        }
+        #myta{
+            width:600px;
+        }
+    </style>
+    <script>
+        window.onload=function()
+        {
+
+            var btn=$('btn');
+            btn.onclick=function(){
+                var msg=$('myta').value;
+                if(msg.length==0)
+                {
+                    alert('请输入内容！');
+                    return;
+                }
+                var li=document.createElement('li');
+                li.innerHTML=msg+'<a href="javascript:;">删除</a>';
+                $('ul').insertBefore(li,$('ul').children[0]);
+                $('myta').value='';
+                $('myta').focus();
+                var lis=$('ul').getElementsByTagName('a');
+                for(var i=0;i<lis.length;i++)
+                {
+                    var obja=lis[i];
+                    console.log(obja);
+                    obja.onclick=function()
+                    {
+                        this.parentNode.remove();
+                    }
+            }
+
+            }
+
+
+
+
+
+        }
+        function $(id){
+            return typeof id==='string'? document.getElementById(id):null;
+        }
+    </script>
+</head>
+<body>
+<div id="box">
+    <div class="box-top">
+        <label>发表评论</label><br>
+        <textarea name="ta" id="myta" cols="73" rows="10"></textarea>
+        <br><button id="btn">发表</button>
+    </div>
+    <ul id="ul">
+
+    </ul>
+</div>
+</body>
+</html>

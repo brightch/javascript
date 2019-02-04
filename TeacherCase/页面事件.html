@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标事件</title>
+
+	<style>
+       img{
+       	display: block;
+       	margin:50px auto;
+       }
+	</style>
+</head>
+<body>
+   
+
+	<img src="images/2.jpg" alt="" name="pic">
+	<script>
+     var h=pic.height;
+     var w=pic.width;
+     var ww=window.innerWidth;
+     var wh=window.innerHeight;
+     function move()
+     {
+        var e=window.event;
+        var obj=document.getElementsByTagName('img')[1];
+        var kc=e.keyCode;
+        if(kc==37)
+        obj.style.left=obj.offsetLeft-5+"px";
+        if(kc==38)
+        obj.style.left=obj.offsetLeft+5+"px";	
+        // if(kc==17)
+        // 	obj.left=
+     }
+     window.onkeydown=move;
+	</script>
+	<img src="images/hart.jpg" style='position: absolute;left:10px;top:0'  alt="">
+</body>
+</html>  

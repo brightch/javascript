@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>缓动动画</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+     }
+     #box{
+         width: 100px;
+         height: 100px;
+         background-color:red;
+         position: absolute;
+     }
+ </style>
+    <script>
+        window.onload=function(){
+
+            // 0.定义变量
+            var target=800;
+            var timer=null;
+            // 1.定义按钮监听函数
+            $('btn').onclick=function () {
+                // 1.1清除定时器
+                clearTimeout(timer);
+                // 1.2定义定时器
+                timer=setInterval(function () {
+                    // 1.3求出步长
+                    var step=(target-$('box').offsetLeft)*0.1;
+                    // 取整
+                    step=Math.ceil(step);
+                    console.log(step);
+                    // 1.4动起来
+                    $('box').style.left=($('box').offsetLeft+step)+'px';
+                    $('box').innerHTML=$('box').offsetLeft+step;
+                    //2.到达目的地，停止缓动
+                    if($('box').offsetLeft===target)
+                    {
+                        clearTimeout(timer);
+                    }
+                },20);
+
+            }
+        }
+        function $(id) {
+            return typeof id==='string'?document.getElementById(id):null;
+        }
+    </script>
+</head>
+<body>
+ <button id="btn">向右走</button>
+<div id="box"></div>
+</body>
+</html>

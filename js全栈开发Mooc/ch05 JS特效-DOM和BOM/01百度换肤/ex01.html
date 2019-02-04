@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            list-style-type: none;
+            vertical-align: top;
+        }
+        #box {
+            background: rgba(255,255,255,0.5);
+        }
+        body{
+            background: url(images/1.jpg);
+            background-size: cover;
+        }
+        #box ul li img{
+            width:160px;
+            height: 90px;
+            padding:20px 0;
+            cursor: pointer;
+        }
+        #box ul{
+            display: flex;
+            justify-content: space-around;
+        }
+        img{
+            transition: all 1s ease;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var box=document.getElementById('box');
+            var lis=box.getElementsByTagName('img');
+            console.log(lis);
+            for(var i=0;i<lis.length;i++)
+            {
+                var ali=lis[i];
+                ali.id=i+1;
+                lis[i].onclick=function()
+                {
+                    document.body.style.background='url(images/'+this.id+'.jpg'
+                }
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+<div id="box">
+    <ul>
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+        <li><img src="images/5.jpg" alt=""></li>
+    </ul>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>排他-使用闭包优化</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+     }
+     li{
+         height: 50px;
+         width: 200px;
+         background-color: #c8c8c8;
+         border: 1px solid #000;
+         margin-top:5px;
+     }
+    .current{
+        background-color: orangered;
+    }
+ </style>
+</head>
+<body>
+<ul>
+    <li class="current"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<script>
+    var lastone=0;
+    var lis=document.getElementsByTagName('li');
+    for(var i=0;i<lis.length;i++)
+    {
+        (function(index){
+            lis[i].onmouseover=
+        })(i);
+        lis[i].onmouseover=function (ev) {
+            lis[lastone].className='';
+            this.className='current';
+            lastone=index;
+        }
+    }
+</script>
+</body>
+</html>

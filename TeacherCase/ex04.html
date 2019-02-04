@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测密码强度</title>
+<!-- 	检测规则：可输入密码字符包括数字、小写字母、大写字母，其他字符四种。
+	弱：只有一种字符
+	中：两种字符，长度大于4字符
+	强：三种及以上字符，长度大于5字符 -->
+
+	<style>
+		.content{
+			width:300px;
+			height: 200px;
+			background: #def;
+			border: 1px solid orange;
+			padding:15px;
+		}
+		.input{
+			margin-bottom: 20px;
+		}
+		.c{
+			display: inline-block;
+			width:70px;
+			height: 30px;
+			background: #eee;
+			text-align: center;
+			line-height: 30px;
+		}
+		.msg{
+			padding:10px 20px;
+			font-size: 20px;
+			line-height: 40px;
+			color:red;
+		}
+	</style>
+	<script>
+	    colors=["#eeeeee","#FF0000","#FF9900","#33CC00" ];
+	    // 读入密码，判断强度（调用函数），设置颜色（调研函数）
+		function checkpwd(value)
+		{
+			var str=frm.pwd.value;//读入密码
+			console.log(value);//在console输出密码
+            document.getElementById('msg').innerHTML="你输入的密码长度为："+str.length;
+			var len=str.length;//计算密码长度
+			var strong=strongPwd(str);//计算密码强度
+			// 如果长度为0，则设置颜色0
+			if(len==0){
+				setColor(0);
+			}
+			// 如果长度小于4字符，设置颜色1
+			if(len<4 && len>0)
+			{
+ 				setColor(1);
+			}
+			//长度大于四字符，根据密码内容确定密码强度并设置颜色
+			if(len>=4)
+			{
+				setColor(strongPwd(str));
+			}
+
+			// frm.pwd.focus();
+		}
+		// 根据value确定密码颜色
+		// 0；表示密码长度为零
+		// 1 表示长度小于4字符
+		// 2 表示长度大于四字符，但字符种类为2种。
+		// 3 表示长度大于四字符，字符种类为三种
+		function setColor(value)
+		{
+			
+			document.getElementById('s1').style.backgroundColor=colors[0];
+			document.getElementById('s2').style.backgroundColor=colors[0];
+			document.getElementById('s3').style.backgroundColor=colors[0];
+			if(value==1)
+			{
+				document.getElementById('s1').style.backgroundColor=colors[value];
+			}
+			if(value==2)
+			{
+				document.getElementById('s1').style.backgroundColor=colors[value];
+				document.getElementById('s2').style.backgroundColor=colors[value];	
+			}
+			if(value==3)
+			{
+				document.getElementById('s1').style.backgroundColor=colors[value];
+				document.getElementById('s2').style.backgroundColor=colors[value];	
+				document.getElementById('s3').style.backgroundColor=colors[value];	
+			}
+		}
+		// 判断密码强度
+		// 思路：定义四个变量分别保存是否出现数字，小写字母，大写字母，其他字符，返回出现的种类数量
+		function strongPwd(value)
+		{
+			var chnum=0,chlow=0,chupper=0,chother=0;
+			var len=value.length;
+			for(var i=0;i<len;i++)
+			{
+				ch=value.charAt(i);
+				if(ch>='0' && ch<='9') 
+				{
+					chnum=1;
+				}else if(ch>='a' && ch<='z')
+				{
+					chlow=1;
+				}else if(ch>='A' && ch<="Z")
+				{
+					chupper=1;
+				}else{
+					chother=1;
+				}
+			}
+			return chnum+chlow+chupper+chother;
+		}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<div class="input">
+		<form action="" name="frm">
+			输入密码：<input type="password" name="pwd" style="width:200px;height: 30px;font-size: 20px;line-height: 30px;border:1px solid red;" onblur="checkpwd('blur')" onkeyup="checkpwd('keyup')" maxlength="6">
+		</div>
+		<div class="pwdresult">
+			密码强度：<span id="s1" class="c c1">弱</span>
+			<span id="s2" class="c c2">中</span>
+			<span id="s3" class="c c3">强</span>
+		</div>
+		<div class="msg" id="msg">
+			
+		</div>
+		</form>
+	</div>
+</body>
+</html>

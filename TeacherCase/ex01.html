@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <title>
+                图片滚动-1
+            </title>
+            <style>
+                body{
+        margin:0;
+        padding:0;
+    }
+    #d1,#d2,#d3{
+        width:790px;
+        height:340px;
+        position: absolute;
+        
+    }
+    #d1{
+        left:0;
+        background: url(images/pic1.jpg);
+    }
+    #d2{
+        left:-790px;
+        background: url(images/pic2.jpg);
+    }
+    #d3{
+        left:-1580px;
+        background: url(images/pic3.jpg);
+    }
+    #content{
+        height:340px;
+        background: olive;
+        position: relative;
+        width:790px;
+        margin:0 auto;
+        overflow: hidden;
+    }
+    #msg{
+        height:340px;
+         
+        border:2px solid green; 
+        width:1000px;
+        color:#2289D1;
+        margin:50px auto;
+        overflow: scroll;
+    }
+            </style>
+            <script src="demo.js">
+            </script>
+        </meta>
+    </head>
+    <body>
+        <div id="content">
+            <div id="d1">
+            </div>
+            <div id="d2">
+            </div>
+            <div id="d3">
+            </div>
+        </div>
+        <div id="msg">
+        </div>
+    </body>
+</html>

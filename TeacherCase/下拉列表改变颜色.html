@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>用下拉文本框改变字体颜色</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<body>
+<form name="form1" method="post" action="">
+  <input name="textfield" type="text" size="23" value="JavaScript自学视频教程">
+  <select name="menu1" onChange="Fcolor()">
+    <option value="black">黑</option>
+    <option value="yellow">黄</option>
+    <option value="blue">蓝</option>
+    <option value="green">绿</option>
+    <option value="red">红</option>
+    <option value="purple">紫</option>
+  </select>
+</form>
+<script language="javascript">
+<!--
+function Fcolor(){
+	var e=window.event;
+	var obj=e.srcElement;
+	form1.textfield.style.color=obj.value;
+}
+//-->
+</script>
+</body>
+</html>

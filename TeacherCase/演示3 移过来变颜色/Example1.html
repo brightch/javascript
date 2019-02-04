@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<META http-equiv="Content-Type" content="text/html; charset=gb2312">
+<TITLE>通过document对象相关属性动态改变背景色</TITLE>
+<SCRIPT language="JavaScript">
+function changeblue()
+{
+  document.bgColor="blue" ;
+}
+function changered()
+{
+  document.bgColor="red" ;
+}
+function changeyellow()
+{
+  document.bgColor="yellow" ;
+}
+</SCRIPT>
+<style>
+div{
+	border:1px solid black;
+	width:200px;
+	height:30px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:25px;
+	margin-top:10px;
+	cursor:pointer;
+	
+</style>
+</HEAD>
+
+<BODY>
+<H2> 移过来我变色给你看看！</H2>
+<div onMouseOver="changered()">变红色</div>
+<div onMouseOver="changeblue()">变蓝色</div>
+<div onMouseOver="changeyellow()">变黄色</div>
+</BODY>
+</HTML>

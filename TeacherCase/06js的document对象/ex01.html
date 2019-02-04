@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	
+</head>
+<body>
+	<div id="d1" style="font-size:30px">页面的文字 </div>
+	<script>
+	var arr=['red','green','blue','purple','gray','brown'];
+	var carr=['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'];
+
+	var n=0;
+	function getcolor()
+	{
+		var color='#';
+		for(var i=0;i<6;i++)
+		{
+			var n=Math.floor(Math.random()*16);
+			color=color+carr[n];
+		}
+		return color;
+
+	}
+    function show()
+    {
+    	
+    	document.bgColor=arr[n];
+    	document.fgColor=getcolor();
+    	document.getElementById('d1').innerHTML+=document.fgColor+"<br>";
+    	n=(n+1)%arr.length;
+    	setTimeout('show()',1000);
+    }
+    show();
+
+	</script>
+</body>
+</html>

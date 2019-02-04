@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<SCRIPT language="javaScript">
+function disptime( )
+{ var now= new Date( ) ;
+  var hour = now.getHours() ;
+  if (hour>=0 && hour <=12)
+      document.write("<H2>上午好!</H2>")
+  if (hour>12 && hour<= 18)
+      document.write("<H2>下午好!</H2>") ;
+  if (hour>18 && hour <24)
+      document.write("<H2>晚上好!</H2>") ;
+      document.write("<H2>今天日期:"+now.getFullYear()+"年"+(now.getMonth( )+1)+"月"+now.getDate()+"日</H2>") ;
+      document.write("<H2>现在时间:"+now.getHours()+"点"+now.getMinutes( )+"分</H2>") ;      }
+</SCRIPT>
+<BODY onload="disptime( )">
+
+<body>
+</body>
+</html>

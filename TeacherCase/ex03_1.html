@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>动态页面效果设计</title>
+		<style>
+		   body,h2,h3,h4,ul,li{
+		   	margin:0;
+		   	padding:0;
+		   	list-style: none;
+
+		   }
+			#d1{
+				width:1000px;
+				margin: 0 auto;
+				border: 1px solid green;
+				background: #eee;
+				text-indent: 10px;
+
+			}
+			#content{
+				height: 500px;
+				border-top: 1px solid green;
+
+			}
+			#control{
+				
+				text-align: center;
+				padding-bottom: 10px;
+			}
+			#control h2{
+				border-bottom:1px solid green;
+				text-align: left;
+		        height: 40px;
+		        line-height: 40px;
+
+			}
+			.c1,.c2,.c3{
+				display: inline-block;
+				vertical-align: top;
+				border:1px solid gray;
+				padding: 10px;
+				height: 250px;
+				
+				margin:10px 0 10px 0;
+				text-align: left;
+			}
+			.c1{
+				width:280px;
+			}
+			.c2{
+				width:250px;
+			}
+			.c3{
+				width:350px;
+			}
+			#content .tab{
+				height:40px;
+				border-bottom: 1px solid gray;
+			}
+			#content .tab ul li,.normal{
+                float:left;
+                width:33.33%;
+                text-align: center;
+                line-height: 40px;
+
+			}
+			#content .tab ul li:hover,.active{
+				background: #000;
+				color:white;
+				cursor: pointer;
+			}
+			.ct1,.ct2,.ct3{
+				width: 900px;
+				height:350px;
+				margin:0 auto;
+				border:1px solid green;
+
+			}
+		</style>
+		<script>
+			function show1()
+			{
+				var d=document.getElementById('ct1');
+				var ta=document.getElementById("ta")
+				if(ta.value=="")
+				{
+					alert("请输入测试的html代码！");
+					return;
+				}
+				s1();
+				d.innerHTML=ta.value;
+				
+				 
+			}
+			function show2()
+			{
+				var f=document.getElementById("sel");
+				var img=document.createElement('img');
+				var p=document.getElementById('pic');
+				s2();					
+				var ct2=document.getElementById('ct2');
+                img.src="images/"+f.value;
+                // alert(ct2.children.length==0);
+                if(ct2.children.length>0)
+				//ct2.insertBefore(img,ct2.firstChild);
+			    ct2.insertBefore(img,ct2.children[0]);
+			    else
+			    ct2.appendChild(img);
+			}
+			function show3()
+			{
+				var f=document.getElementById("txt");
+				if(f.value==""){
+					alert("请输入文件名和路径")
+				}
+				var img=document.createElement('img');
+				var p=document.getElementById('pic');
+				s2();
+				
+				
+				var ct2=document.getElementById('ct2');
+                img.src=f.value;
+                // alert(ct2.children.length==0);
+                if(ct2.children.length>0)
+				//ct2.insertBefore(img,ct2.firstChild);
+			    ct2.insertBefore(img,ct2.children[0]);
+			    else
+			    ct2.appendChild(img);
+			}
+			function s1()
+			{
+				var ls=document.getElementsByTagName('li');
+				ls[0].className='active';
+				ls[1].className='normal';
+				ls[2].className='normal';
+				document.getElementById("ct1").style.display="block";
+				document.getElementById("ct2").style.display="none";
+				document.getElementById("ct3").style.display="none";
+				document.getElementById("title").innerHTML="html测试代码";
+			}
+			function s2()
+			{
+				var ls=document.getElementsByTagName('li');
+				ls[0].className='normal';
+				ls[1].className='active';
+				ls[2].className='normal';
+				document.getElementById("ct1").style.display="none";
+				document.getElementById("ct2").style.display="block";
+				document.getElementById("ct3").style.display="none";
+				document.getElementById("title").innerHTML="显示图片";
+			}
+			function s3()
+			{
+				var ls=document.getElementsByTagName('li');
+				ls[0].className='normal';
+				ls[1].className='normal';
+				ls[2].className='active';
+				document.getElementById("ct1").style.display="none";
+				document.getElementById("ct2").style.display="none";
+				document.getElementById("ct3").style.display="block";
+				document.getElementById("title").innerHTML="设计div样式";
+
+			}
+		</script>
+	</head>
+	<body>
+		 
+		<div id="d1" >
+			<div id="control">
+				<h2>设置面板</h2>
+				<div class="c1">
+					<h4>html测试代码</h4>
+					<textarea name="ta" id="ta" cols="30" rows="10"></textarea><br>
+					<button type="button" onclick="show1()">显示</button>
+				</div>
+				<div class="c2">
+					<h4>显示图片</h4>
+					<select name="" id="sel">
+						<option value="1.jpg">图片1</option>
+						<option value="2.jpg">图片3</option>
+						<option value="3.jpg">图片3</option>
+
+					</select>
+					<button type="button" onclick="show2()">显示</button><br>
+					<input type="text" id="txt" size="20"><button type="button" onclick="show3()">显示</button>
+				</div>
+					<div class="c3">
+					<h4>设计div样式</h4>
+					 <p>边框
+                       <select name="" id="bc">
+                       	<option value="red">红色</option>
+                       	<option value="green">绿色</option>
+                       	<option value="blue">蓝色</option>
+                       </select>
+                       <select name="" id="bw">
+                       	<option value="1px">细线</option>
+                       	<option value="3px">中粗线</option>
+                       	<option value="5px">粗线</option>
+                       </select>
+                       <select name="" id="bs">
+                       	<option value="solid">实线</option>
+                       	<option value="dashed">虚线</option>
+                       	<option value="dotted">点线</option>
+                       </select>
+					 </p>
+					 <p>
+					 	背景色：<select name="" id="bc2">
+                       	<option value="red">红色</option>
+                       	<option value="green">绿色</option>
+                       	<option value="blue">蓝色</option>
+                       	<option value="orange">橙色</option>
+                       	<option value="olive">橄榄色</option>
+                       	<option value="gray">灰色</option>
+                       </select>
+					 </p>
+					 <p>
+					 	文字颜色<select name="" id="fc">
+                       	<option value="white">白色</option>
+                       	<option value="black">黑色</option>
+                       	</select>
+					 	文字大小<select name="" id="fs">
+                       	<option value="10px">10像素</option>
+                       	<option value="12px">12像素</option>
+                       	<option value="16px">16像素</option>
+                       	<option value="20px">20像素</option>
+                       	<option value="25px">25像素</option>
+                       	<option value="30px">30像素</option>
+                       </select>
+					 </p>
+					 <p>
+					 	显示内容：<textarea name="" id="txt2" cols="20" rows="5"></textarea>
+					 
+					 	<button type="button" onclick="show4()">显示</button><br>
+					 </p>
+				</div>
+			</div>
+			<div id="content">
+			    <div class="tab">
+			    	<ul>
+			    		<li onclick="s1()">html测试代码</li>
+			    		<li onclick="s2()">显示图片</li>
+			    		<li onclick="s3()">设计div样式</li>
+			    	</ul>
+			    </div>
+			       <h5 id="title">html测试代码</h5>
+				<div class="ct1" id="ct1" style="display: block;">
+					
+				</div>
+				<div class="ct2" id="ct2" style="display: none;overflow: scroll;">
+					 
+				</div>
+				<div class="ct3" id="ct3" style="display: none;">
+					
+				</div>
+			</div>
+
+		</div>
+	</body>
+	</html>	

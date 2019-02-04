@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            图片相册播放
+        </title>
+        <link href="style.css" rel="stylesheet" type="text/css">
+            <!-- <script src="demo.js" type="text/javascript"> 
+            
+        </link></script>-->
+        <script>
+           var  index=1;
+            function prev()
+            {
+                if(index==1) index=6;
+                else index--;
+                  var tp = document.createElement("img");
+                    tp.src = "images/0"+index+".jpg";
+                    tp.style.position = "absolute";
+                    tp.style.width = "665px";
+                    tp.style.height = "414px";
+                    document.getElementById('content').appendChild(tp);
+                // console.log(index);
+                // var z=document.getElementById('content').style.zIndex;
+                // console.log(typeof(z));
+            }
+            function next()
+            {
+                index=(index+1)%7==0?1:(index+1)%7;
+                console.log(index);
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="content" >
+            <img src="images/01.jpg">
+            </img>
+            <div id="control">
+            	<button type="button" class="prev" onclick="prev()">前一张</button><span id="ex"></span><button type="button" onclick="next()">下一张</button>            </div>
+           </div>
+    </body>
+</html>

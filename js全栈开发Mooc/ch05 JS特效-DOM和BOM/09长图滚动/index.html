@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+编程思想：
+
+<head>
+    <meta charset="UTF-8">
+    <title>长图滚动</title>
+    <style>
+        #box{
+            width:1000px;
+            height: 560px;
+            position: relative;
+            margin: 50px auto;
+            overflow: hidden;
+        }
+        #pic{
+            position: absolute;
+        }
+        #left,#right{
+            width:500px;
+            height: 560px;
+            position: absolute;
+
+        }
+        #left{
+            left:0;
+            top:0;
+            background: rgba(255,0,0,0.5);
+        }
+        #right{
+            left:500px;
+            top:0;
+            background: rgba(0,255,0,0.5);
+        }
+    </style>
+    <script>
+        // 移动方向
+        var dir;
+        // 初始 位置
+        var pos=0;
+        // 每次移动的步长
+        var step=5;
+        // 定时器对象
+        var t=null;
+        function scrollauto(n)
+        {
+            // 计算新位置
+           pos=pos+n*step;
+           // 清除定时器
+           clearTimeout(t);
+           if(pos>=0)
+               pos=0;
+           if(pos<-920)
+               pos=-920;
+           var pic=document.getElementById("pic");
+           pic.style.left=pos+'px';
+           t=setTimeout('scrollauto('+n+')',10);
+           console.log(pos);
+        }
+         function sc()
+         {
+             clearTimeout(t);
+             console.log('sc');
+         }
+    </script>
+</head>
+<body>
+  <div id="box">
+      <img id="pic" src="images/tea.jpg" alt="">
+      <!--在box的div上添加两个透明的div，设置div的进入事件分别控制图片的移动方向-->
+      <div id="left" onmouseover="scrollauto(-1)" onmouseout="sc()"></div>
+      <div id="right" onmouseover="scrollauto(1)" onmouseout="sc()"></div>
+  </div>
+</body>
+</html>
