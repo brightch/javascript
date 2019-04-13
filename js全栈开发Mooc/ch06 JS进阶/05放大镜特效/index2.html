@@ -6,18 +6,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script>
 
-
-
-    </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
+        .content {
+            margin: 100px 0 0 100px;
+            position: relative;
+            width: 1100px;
+
+        }
+
+        .pic {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            border: 1px solid #000;
+        }
+
+        .pic img {
+            width: 400px;
+            height: 400px;
+        }
+
+        .pic span {
+            display: block;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 0, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display:none;
+        }
+
+        .big {
+            position: absolute;
+            top: 0;
+            left: 410px;
+            width: 600px;
+            height: 600px;
+            border: 1px solid #000;
+            overflow: hidden;
+            display: none;
+        }
+
+        .big img {
+           position: absolute; 
+        }
+
+        .piclist ul li {
+            float: left;
+            width: 54px;
+            height: 54px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .piclist ul li img {
+            width: 54px;
+            height: 54px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="content">
+        <div class="pic"><img src="images/m01.jpg" alt=""><span></span></div>
+        <div class="big"><img src="images/b01.jpg" alt=""></div>
+        <div class="piclist">
+            <ul>
+                <li><img src="images/small01.jpg" alt=""></li>
+                <li><img src="images/small02.jpg" alt=""></li>
+                <li><img src="images/small03.jpg" alt=""></li>
+                <li><img src="images/small04.jpg" alt=""></li>
 
+
+            </ul>
+        </div>
+    </div>
 </body>
+<script>
+    window.onload = function () {
+        // 1.获取各个div对象
+        var pic = document.getElementsByClassName('pic')[0];
+        var content = document.getElementsByClassName('content')[0];
+        var mask = document.getElementsByTagName("span")[0];
+        var big = content.children[1];
+        var bigimg=big.children[0];
+        var ul=document.getElementsByTagName("ul")[0];
+        var lis=ul.children;
+        console.log(lis);
+        // 2.鼠标移入图片
+        pic.onmouseover = function () {
+            big.style.display = "block";
+            mask.style.display = "block";
+            this.onmousemove = function (event) {
+                //  console.log(content.clientLeft);
+                var x = event.clientX - this.offsetParent.offsetLeft - mask.offsetWidth / 2;
+                var y = event.clientY - this.offsetParent.offsetTop - mask.offsetHeight / 2;
+                if (x <= 0) {
+                    x = 0;
+                } else {
+                    if (x > this.offsetWidth - mask.offsetWidth) {
+                        x = this.offsetWidth - mask.offsetWidth;
+                    }
+                }
+                if (y <= 0) {
+                    y = 0;
+                } else if (y > this.offsetHeight - mask.offsetHeight) {
+                    y = this.offsetHeight - mask.offsetHeight;
+                }
+
+                mask.style.left = x + "px";
+                mask.style.top = y + "px";
+                //大图移动公式 
+                // pic.width/big.width=picx/bigx
+                bigimg.style.left=-x*pic.offsetWidth/bigimg.offsetWidth+"px";
+                bigimg.style.top=-y*pic.offsetHeight/bigimg.offsetHeight+"px";
+            }
+        }
+        
+        pic.onmouseout = function () {
+            big.style.display = "none";
+            mask.style.display = "none";
+        }
+        for(var i=0;i<lis.length;i++)
+        {
+            lis[i].index=i;
+            lis[i].onclick=function()
+            {
+                var k=parseInt(this.index)+1;
+                pic.children[0].src="images/m0"+k+".jpg";
+                bigimg.src="images/b0"+k+".jpg";
+            }
+        }
+    }
+
+</script>
 
 </html>

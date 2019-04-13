@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>进度条特效</title>
+    <style>
+      .content{
+          width: 1000px;
+          height: 30px;
+          position: relative;
+          margin:100px auto;
+      }
+      .progressbg{
+          position: absolute;
+          height: 100%;
+          width: 900px;
+          background: #ccc;
+          border-radius: 5px;
+      }
+      .num{
+     position: absolute;
+     right:40px;
+     height: 30px;
+     line-height: 30px;
+      }
+      .progress{
+          position: absolute;
+          height: 100%;
+          border-radius: 5px 0 0 5px;
+          background: orange;
+          width: 0px;
+
+      }
+      .bar{
+          position: absolute;
+          display: block;
+          width:20px;
+          height: 50px;
+          top:-10px;
+          
+          background: orange;
+          border-radius: 5px;
+      }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="progressbg">
+            <div class="progress"></div>
+            <span class="bar"></span>
+        </div>
+        <div class="num">0%</div>
+    </div>
+</body>
+<script>
+window.onload=function(){
+    var content=document.getElementsByClassName("content")[0];
+    var progress=document.getElementsByClassName("progress")[0];
+    var progressbg=document.getElementsByClassName("progressbg")[0];
+    var bar=document.getElementsByClassName("bar")[0];
+    var num=document.getElementsByClassName("num")[0];
+    // console.log(bar)
+    bar.onmousedown=function(){
+        
+        // console.log(content.offsetLeft); 
+        document.onmousemove=function(event){
+            // 相对于进度条最左端，bar向右移动的距离
+            var x=event.clientX-content.offsetLeft; 
+            console.log("x=",x);
+            console.log("progress.offsetWidth=",progressbg.offsetWidth);
+            if(x<=0)
+            {
+                x=0;
+            }else if(x>=progressbg.offsetWidth){
+                x=progressbg.offsetWidth;
+            }
+           
+            bar.style.left=x+'px';
+            progress.style.width=x+"px";
+            num.innerHTML=Math.floor(x*100/progressbg.offsetWidth)+"%";
+            //鼠标按下和抬起的事件冲突。
+            return false;
+        }
+        document.onmouseup=function(){
+              // 当鼠标抬起，取消鼠标移动的事件代码
+            document.onmousemove=null;
+        }
+    }
+    
+     
+}
+</script>
+</html>

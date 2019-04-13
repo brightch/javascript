@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例',
+                left:'center',
+                //标题字体样式设置
+                textStyle:{
+                    //文字颜色
+                    color:'#0f0',
+                    //字体风格,'normal','italic','oblique'
+                    fontStyle:'normal',
+                    //字体粗细 'normal','bold','bolder','lighter',100 | 200 | 300 | 400...
+                    fontWeight:'bold',
+                    //字体系列
+                    fontFamily:'sans-serif',
+                    //字体大小
+            　　　　 fontSize:18
+                 }
+            },
+            tooltip: {},
+            //图例设置
+            legend: {
+                //水平/垂直显示
+                orient: 'horizontal', // 'vertical'
+                //水平方向位置
+                x: 'right', // 'center' | 'left' | {number},     
+                //垂直方向位置
+                y: '30',//'25%', //'top', // 'center' | 'bottom' | {number}      
+                //背景色,默认透明
+                backgroundColor: '#ccc',
+                //内边距
+                padding: 10,    // [5, 10, 15, 20]  
+                //图例每项之间的间隔
+                itemGap:10,                                 
+                //图例标记的图形宽度
+                itemWidth:25,   
+                //图例标记的图形高度                          
+                itemHeight:14,   
+                                           
+
+                data:['销量','产量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+                //x轴名称
+                name:'商品名称',
+                //x轴名称旋转
+                nameRotate:0,
+                //x轴名称显示位置
+                nameLocation:'start',//start开始位置,end末尾
+                
+                //旋转x轴标签和间隔
+                axisLabel: {  
+                    /*坐标轴刻度标签的显示间隔(在类目轴中有效哦)，
+                    默认会采用标签不重叠的方式显示标签（也就是默认会将部分文字显示不全）
+                   可以设置为0强制显示所有标签，
+                   如果设置为1，表示隔一个标签显示一个标签，如果为3，表示隔3个标签显示一个标签，*/
+                    interval:0,  
+                   // 标签倾斜的角度
+                    rotate:40  
+            } 
+
+            },
+            yAxis: {},
+            //每个标签需要显示几个series,如下是两个series,需要分表设置数据,系列名和类型
+            series: [{
+                name: '销量',
+                //bar 柱形图,line折线图,scatter散点图
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20],
+                //图形上显示数值标签
+                label:{
+                    //是否显示,默认不显示
+                    show:true,
+                    //显示位置
+                    //参考:https://www.echartsjs.com/option.html#series-line.label.position
+                    position:'inside',
+                    color:'yellow'
+                }
+            },
+            {
+                name:'产量',
+                type:'bar',
+                data:[2,34,24,23,12,14],
+                  label:{
+                    show:true,
+                    position:'top'
+                }
+            }
+            ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

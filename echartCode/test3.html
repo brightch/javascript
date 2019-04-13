@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //创建空数组
+        var json = [];
+        //创建对象
+        var row1 = {};
+        row1.id= "1";
+        row1.name = "jyy";
+        //创建对象的另一种方法
+        //var onejson = {id:'2',name:'abc'}
+        //将对象加入数组
+        json.push(row1);
+        //创建新对象，并加入数组
+        row1.id='2';
+        row1.name='chen';
+        json.push(row1);
+        //输出json数组对象
+        //console.log(json);
+        //转换为字符串
+        var jsonStr = JSON.stringify(json);
+        jsonobj=JSON.parse(jsonStr);
+        console.log(jsonobj);
+        console.log(JSON.stringify(jsonobj));
+       // console.log(jsonStr);
+      /*  var onejson = {};
+        onejson.id= "1";                                                                                                           
+        onejson.name = "jyy";
+      //  var onejson = {id:'2',name:'abc'}
+        console.log(onejson);
+        console.log(JSON.stringify(onejson));*/
+    </script>
+</body>
+</html>

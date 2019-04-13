@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main"></div>
+</body>
+<script>
+    // str = '({"brand": ["360", "Apple", "HTC", "HUAWEI", "OPPO", "vivo", "一加", "三星（SAMSUNG）", "中兴（ZTE）", "努比亚（nubia）", "华为（HUAWEI）", "天语（K-TOUCH）", "守护宝", "小米（MI）", "小辣椒", "摩托罗拉（Motorola）", "美图（meitu）", "联想", "诺基亚（NOKIA）", "酷派（Coolpad）", "锤子（smartisan）", "飞利浦（PHILIPS）", "魅族（MEIZU）", "None", "华为", "联想（Lenovo）", "黑鲨"], "counts": [2835, 34064, 172, 119, 18108, 12655, 489, 7651, 539, 2847, 179766, 1013, 13, 87697, 210, 47, 839, 2575, 8312, 112, 6101, 6789, 11541, 3, 38, 39, 407]})'
+    // var objs = eval(str)
+    // brand = objs['brand']
+    // alert(brand)
+    var cc=Array();
+    var obj={}
+    obj['red']=1;
+    cc.push(obj);
+    var obj={}
+    obj['blue']=2;
+    cc.push(obj);
+    var obj={}
+    obj['gray']=3;
+    cc.push(obj);
+    console.log(cc.length)
+    console.log(JSON.stringify(cc));
+   
+
+    main = document.getElementById('main');
+
+</script>
+
+</html>
