@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         img{
+             width: 250px;
+             height: 360px;
+             transition: all 1s !important;
+         }
+        .select{
+            top:50% !important;
+            left:50% !important;
+            transform: rotate(0deg) translate(-50%,-50%) scale(1.2) !important;
+            transition: all 1s !important;
+            z-index: 99;
+         }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+            var pw=250;
+            var ph=360;
+        $(function(){
+          //  <!-- alert($(window).width()); -->
+            var ww=$(document).width();
+            var wh=$(document).height();
+            console.log(wh);
+            for(var i=1;i<=6;i++)
+            {
+                var pic=$("<img></img>");
+                pic.attr("src","images/"+i+".jfif");
+                pic.css("position","absolute");
+                var pl=ww-250;
+                var pt=wh-360;
+                pic.css("left",Math.floor(Math.random()*pl)+"px");
+                pic.css("top",Math.floor(Math.random()*pt)+"px");
+                pic.css("transform","rotate("+(Math.random()*360)+"deg)");
+                $("body").append(pic);
+            }
+            $("img").click(function(){
+            /*    $(this).css("transform","rotate(0deg) scale(1.5)");
+                $(this).css("z-index",99);
+                $(this)
+                */
+                $("img").removeClass("select");
+               $(this).addClass("select");
+               //console.log("select");
+            });
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

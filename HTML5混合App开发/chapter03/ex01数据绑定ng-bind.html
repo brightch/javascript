@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-bind数据绑定</title>
+    <script src="./angular.js"></script>
+    <script>    
+        var MyApp=angular.module("app",[]);
+        MyApp.controller("MyController",function($scope){
+            $scope.data="this is data in scope!"
+        });
+    </script>
+</head>
+<body ng-app="app" ng-controller="MyController">
+    <h2>使用插值表达式显示数据</h2>
+    <!-- 使用插值表达式，不会接管标签的显示内容 -->
+    <p>{{data}}</p>
+   <h2>这是使用ng-bind进行数据绑定</h2>   
+   <!-- 使用ng-bind会接管元素的显示，覆盖元素所有的显示内容 -->
+   <!-- ng-bind只能从scope中获取并显示数据，不能返回修改的数据，这是单向绑定 -->
+   <p ng-bind="data">在这里输入的内容将无法显示，这是由于p标签已经被ng-bind接管</p>
+   <h2>这是使用ng-model进行数据绑定</h2>
+   <!-- ng-model不仅可以获取scope中的数据，还可以将修改后的数据返回scope，这是双向绑定 -->
+   <p ng-model="data"></p>
+   <!-- ng-model只用于表单元素中，可以实现双向绑定 -->
+   <input type="text" name="" ng-model="data" id="">
+</body>
+</html>

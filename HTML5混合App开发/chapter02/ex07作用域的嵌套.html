@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>作用域的嵌套</title>
+    <script src="./angular.js"></script>
+    <script>
+        var MyApp1=angular.module("app",[]);
+        MyApp1.controller("MyController1",function($scope){
+             $scope.d1="MyController1的数据"
+        });
+        MyApp1.controller("MyController2",function($scope){
+            $scope.d2="MyController2的数据"
+        });
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="MyController1">
+          <p>{{d1}}</p>
+          <p>{{d2}}</p>
+    </div>
+</body>
+</html>

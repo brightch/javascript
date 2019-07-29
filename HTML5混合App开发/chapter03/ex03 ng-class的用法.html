@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-class用法</title>
+    <style>
+        .s1{
+            border:2px solid red;
+        }
+        .s2{
+            width: 100px;
+            height: 50px;
+        }
+        .s3{
+            background: skyblue;
+        }
+        .s4{
+            font-size: 30px;
+        }
+    </style>
+    <script src="./angular.js"></script>
+    <script>
+        var Myapp=angular.module("app",[]);
+        Myapp.controller("MyController",function($scope){
+            //方式1 创建对象，用键值对表示制定样式是否开启
+            $scope.classcontrol={
+                s1:true,
+                s2:true,
+                s3:false,
+                s4:true
+            };
+            //方式2 字符串，内容为需要设置的样式名称，空格隔开
+            $scope.cc2="s1 s4";
+            //方式3 数组，每个元素是字符串，内容为样式名称
+            $scope.cc3=["s1","s3","s4"]
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="MyController">
+            <div ng-class="cc3">1234</div>
+        </div>
+    </div>
+</body>
+</html>

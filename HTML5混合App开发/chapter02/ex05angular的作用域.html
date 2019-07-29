@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>angular的作用域</title>
+    <script src="./angular.js"></script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="MyController">
+            <input type="text" name="" id="" ng-model="name">
+            <button ng-click="say()">操作</button>
+            <h2>{{welcome}}</h2>
+    </div>
+    <script>
+       //1定义模块
+       var Myapp1=angular.module("app",[]);
+       //2.创建控制器
+       Myapp1.controller("MyController",function($scope){
+           //在作用域中挂载属性name
+             $scope.name='lucy';
+             //在作用域中挂载函数say，调用格式为say()
+             $scope.say=function(){
+               $scope.welcome="welcome "+$scope.name+"!";
+             };
+       });
+
+    </script>
+</body>
+</html>

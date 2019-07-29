@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-if指令</title>
+    <script src="./angular.js"></script>
+    <script>
+        var app=angular.module("app",[]);
+        app.controller("mc",function($scope){
+           $scope.staus="false";
+        });
+    </script>
+    <!-- 思路
+    1.在控制器中定义变量status
+    2.页面添加复选框，使用ng-model绑定staus变量。
+    3.使用ng-if控制div显示其中的内容。
+    4.通过点击复选框，修改绑定的status变量的真假值，从而影响ng-if显示div内容。
+    -->
+</head>
+<body ng-app="app" ng-controller="mc">
+    <input type="checkbox" name="" ng-model="staus" id="">点击控制显示
+    <div ng-if="staus">
+        <h2>这是ng-if控制显示的内容！</h2>
+    </div>
+</body>
+</html>

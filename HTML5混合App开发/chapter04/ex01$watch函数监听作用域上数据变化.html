@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 思路
+    通过$scope调用$watch函数，在数据更新过程中，显示新旧数据的变化，
+    注意$watch函数的用法。
+    -->
+    <script src="./angular.js"></script>
+    <script>
+
+        var app=angular.module("app",[]);
+        app.controller("MyController",function($scope){
+            $scope.data="hello world!"
+            $scope.$watch("data",function(newdata,olddata){
+                console.log("输出的数据变化，newdata："+newdata+",olddata:"+olddata);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="MyController">
+        <input type="text" ng-model="data">
+        <p>{{data}}</p>
+    </div>
+</body>
+</html>

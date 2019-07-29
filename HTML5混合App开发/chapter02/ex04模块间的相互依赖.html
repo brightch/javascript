@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块间的相互依赖</title>
+    <script src="./angular.js"></script>
+
+</head>
+<!-- body标签由app2的模块控制 -->
+<body ng-app="app2">
+    <!-- 由于app2依赖app1，这是可以使用app1定义的控制器 -->
+    <div ng-controller="mycontroller1">
+        {{name}}
+    </div>
+    
+</body>
+<script>
+    //定义app1模块，myapp1的js变量保存改模块
+    var myapp1=angular.module("app1",[]);
+    //定义app1模块的一个控制器，名称为mycontroller1，并挂载变量name
+    myapp1.controller("mycontroller1",function($scope){
+          $scope.name='张三';
+    });
+    //定义app2模块，在依赖列表中添加app1模块，表示app2可以使用app1的控制器及其变量
+    var myapp2=angular.module("app2",['app1']);
+</script>
+</html>

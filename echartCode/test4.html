@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="ex01/js/echarts.js"></script>
+    <script>
+        function show() {
+            var myChart = echarts.init(document.getElementById('main'));
+            option = {
+                title: {
+                   text: ' 学生绩点雷达图',     //这里的参数是整个图标的标题 后面也可以加注释
+                },
+               tooltip: {
+                   trigger: 'axis'
+                },
+               legend: {
+                   orient: 'vertical',              //这里主要是标识不同颜色代表不同的同学
+                    x: 'right',
+                    y: 'bottom',
+                    data: ['A同学成绩 ', 'B同学成绩 ']
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+
+                    }
+
+                },
+                
+                polar: [
+
+                    {
+
+                        indicator: [
+
+                            { text: '素质必修课 ', max: 5.0 },    //这里用于设置各轴的参数以及最大值
+
+                            { text: '核心必修课 ', max: 5.0 },
+
+                            { text: '一般必修课 ', max: 5.0 },
+
+                            { text: '通识必修课', max: 5.0 },
+
+                            { text: '通识限选课', max: 5.0 },
+
+                        ]
+
+                    }
+
+                ],
+
+                calculable: true,
+
+                series: [
+
+                    {
+
+                        name: '预算 vs 开销（Budget vs spending）',
+
+                        type: 'radar',
+
+                        data: [
+
+                            {
+
+                                value: [3.6, 4.1, 3.3, 2.5, 2.7],
+
+                                name: 'A同学 '
+
+                            },
+
+                            {
+
+                                value: [4.2, 4.1, 3.9, 3.7, 3.5],
+
+                                name: 'B同学 '
+
+                            }
+
+                        ]
+
+                    }
+
+                ]
+
+            };
+
+            myChart.setOption(option);
+        }
+        window.onload=show;
+    </script>
+
+    <div id="main" style="width: 600px;height:400px;"></div>
+</body>
+
+</html>

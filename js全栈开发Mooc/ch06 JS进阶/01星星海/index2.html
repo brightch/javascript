@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        background: #000;
+    }
+    *{
+        margin: 0;
+        padding: 0;
+        
+    }
+    span{
+        display:block;
+        width: 30px;
+        height: 30px;
+        background: url(images/star.png);
+        background-size: cover;
+        position:absolute;
+        animation: flash 3s infinite;
+    }
+    span:hover{
+        transform:scale(1.5) rotate(180deg)!important;
+        transition: all 1s;
+    }
+    @keyframes flash{
+        0%{
+            opacity: 0;
+        }
+        50%{
+            opacity:1
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script>
+
+        $(function(){
+            var screenH = document.documentElement.clientHeight;
+            var screenW=document.documentElement.clientWidth;
+            for(var i=0;i<100;i++)
+            {
+                var st=Math.floor(Math.random()*screenH);
+                var sl=Math.floor(Math.random()*screenW);
+                var s=$("<span></span>");
+                s.css("left",sl+"px").css("top",st+"px").css("transform",'scale('+Math.random()*2 +')').css("animationDelay",Math.random()*3+'s');
+                $("body").append(s);
+
+
+            }
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

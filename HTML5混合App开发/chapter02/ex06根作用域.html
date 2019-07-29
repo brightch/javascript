@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>根作用域</title>
+    <script src="./angular.js"></script>
+    <script>
+        var MyApp1 = angular.module("app1", []);
+         //获取根作用域
+        MyApp1.controller("MyController1", function ($scope, $rootScope) {
+           //使用根作用域定义属性rootScope
+            $rootScope.rdata = "RootScope数据";
+              //使用MainController作用域定义属性sdata
+            $scope.sdata = "scope数据";
+        });
+    </script>
+</head>
+
+<body>
+    <div ng-app="app1">
+          <!--$rootScope有效，但是MainController的作用域无效-->
+        <p>app作用域显示</p>
+        <span>{{rdata}}</span>
+        <span>{{sdata}}</span>
+
+        <div ng-controller="MyController1">
+              <!--$rootScope有效，但是MainController的作用域也有效-->
+            <p>MyController1控制器作用域</p>
+            <span>{{rdata}}</span>
+            <span>{{sdata}}</span>
+        </div>
+    </div>
+</body>
+
+</html>

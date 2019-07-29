@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双向数据绑定</title>
+    <script src="./angular.js"></script>
+    <script>
+        var MyApp=angular.module("app",[]);
+        MyApp.controller("MyController",function($scope){
+            $scope.val="张三";
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="app" ng-controller="MyController">
+        <!-- ng-model指令实现双向绑定，只能用于表单元素 -->
+
+            <input type="text" name="" ng-model="val" id="">
+            <h2>{{val}}</h2>
+    </div>
+   
+</body>
+</html>

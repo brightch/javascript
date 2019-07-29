@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./angular.js"></script>
+    <script>
+        var app=angular.module("app",[]);
+        app.controller("mycontroller",function($scope){
+             $scope.boolean=true;   
+             $scope.msg="helloworld！"
+        });
+    </script>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller="mycontroller">
+            <form action="">
+                <!-- ng-readonly为只读，仍然会提交 -->
+                    <input type="text" name="n1" id="id1" ng-readonly="boolean" ng-model="msg" >
+                    <!-- ng-disabled为禁用，不会被提交 -->
+                    <input type="text" name="n2" id="id2" ng-disabled="boolean" ng-model="msg">
+                    <input type="submit" value="提交">
+            </form>
+           
+        </div>
+    </div>
+</body>
+</html>

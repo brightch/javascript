@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-click用法</title>
+    <script src="./angular.js"></script>
+  <!-- 在控制器中定义变量和函数
+  在页面中单变量绑定到span中
+  点击按钮，改变绑定的变量值，页面会同步改变 -->
+</head>
+<body ng-app="app">
+    <div ng-controller="MyController">
+        <span ng-bind="msg"></span>
+        <!-- ng-bind不能用于表单 -->
+        <input type="text" name="" ng-bind="msg" id="">
+        <button ng-click="myclick()" >操作</button>
+    </div>
+    <script>
+            var app=angular.module("app",[]);
+            app.controller("MyController",function($scope){
+                $scope.msg="等待操作。。。";
+
+                $scope.myclick=function(){
+                    $scope.msg="按钮已经被点击操作！";
+                }
+            })
+            var btn=document.querySelector("button");
+            btn.onclick=function(){
+                console.log("点击操作！")
+            }
+        </script> 
+</body>
+</html>

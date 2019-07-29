@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ng-change指令使用</title>
+    <!-- 编程思路：
+    1.创建控制器，在控制器中创建变量msg，函数mc，用于改变msg值
+    2.在页面中，添加文本框，添加ng-change控制器，绑定mc函数，当发生change调用mc函数
+    3.在页面中添加span，input分别使用ng-bint,{{}}，ng-model形式绑定msg函数。
+    4.这是使用会出错，原因是使用ng-change指令的标签必须使用ng-model指令绑定变量，
+    这里添加ng-model绑定一个不存在的mv变量，就不会出错。
+    -->
+    <script src="./angular.js"></script>
+    <script>
+        var app=angular.module("app",[]);
+        app.controller("mc",function($scope){
+            $scope.msg="等待输入框状态改变！";
+            $scope.ochang=function(){
+              $scope.msg="输入框内容已经改变！";
+            };
+        });
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="mc">
+        <input type="text" name="" value="abcd" ng-model="mv" ng-change="ochang()" id="">
+        <span ng-bind="msg"></span>
+        <p>{{msg}}</p>
+        <input type="text" ng-model="msg">
+    </div>
+    
+</body>
+</html>

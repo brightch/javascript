@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 思路：
+    1.本例不通过控制器定义的函数来修改$scope的值，如果通过控制器的函数进行修改
+    那么angular会自动进行脏数据检查，自动调用apply进行更新。
+    2.这里是有js的方式进行数据更新，但是js无法访问angular，因此在angular中把$scope的引用放入window对象岁。
+    3.在js中可以访问window对象中对$scope的引用，操作
+    4.但是由于不是angular中对数据的修改，所以不会自动调用脏数据检查机制，所以需要手动调用apply函数更新。
+    -->
+    <script src="./angular.js"></script>
+    <script>
+        var app=angular.module("app",[]);
+        app.controller("mycont",function($scope){
+            $scope.data=1;
+            window.scop=$scope;
+        })
+    </script>
+</head>
+<body ng-app="app" ng-controller="mycont">
+    <input type="text" ng-model="data">
+    <button onclick="plusone()">add</button>
+</body>
+<script>
+    function plusone()
+    {
+        window.scop.data+=1;
+        console.log(window.scop.data);
+        window.scop.$apply();
+    }
+</script>
+</html>

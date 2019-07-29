@@ -45,7 +45,7 @@
                     return;
                 }
                 var li=document.createElement('li');
-                li.innerHTML=msg+'<a href="javascript:;">删除</a>';
+                li.innerHTML=msg+'<a href="javascript:this.parentNode.parentNode.removeChild(this.parentNode);">删除</a>';
                 $('ul').insertBefore(li,$('ul').children[0]);
                 $('myta').value='';
                 $('myta').focus();

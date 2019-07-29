@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模块和控制器</title>
+    <script src="./angular.js"></script>
+    <script>
+        //1.只要导入angular，就可以全局使用Angular来创建模块和控制器
+        //参数1 字符串，表示要创建模块的名称
+        //参数2 数组，表示当前模块依赖的其他模块
+        var myapp=angular.module("app",[])
+        myapp.controller('mycontroller',function($scope){
+            $scope.name="这是scope的name属性值！";
+        });
+    </script>
+</head>
+<body ng-controller='mycontroller'>
+    {{name}}
+    
+</body>
+</html>

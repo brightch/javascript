@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>angular表达式</title>
+    <script src="./angular.js"></script>
+    <script>
+       var MyApp=angular.module("app",[]);
+       MyApp.controller("MyController",function($scope){
+           $scope.msg="hello";
+           $scope.num=1;
+           $scope.fn=function(){
+               return 10;
+           }
+           $scope.boolean=true;
+           $scope.person={name:"张三",age:18};
+           $scope.arr=[1,2,3,4,5,6,7,8,9,10];
+
+       })
+    </script>
+</head>
+<body ng-app="app">
+    <div ng-controller="MyController">
+        <h2>字符串表达式-过滤器</h2>
+        <!-- 输出字符串，并使用大写过滤器 -->
+        <p>{{msg|uppercase}}</p>
+        <h2>字符串表达式-拼接字符串</h2>
+        <!-- 输出字符串，并使用大写过滤器 -->
+        <p>{{msg+" world!"}}</p>
+        <h2>数值表达式-过滤器</h2>
+        <!-- 输出数值，显示两位小数 -->
+        <p>{{num|number:2}}</p>
+        <h2>数值表达式-运算操作</h2>
+        <!-- 输出字符串，并使用大写过滤器 -->
+        <p>{{num+3}}</p>
+        <h2>控制器的函数的返回值输出</h2>
+        <p>{{fn()+3}}</p>
+        <h2>输出对象</h2>
+        <p>{{person.name+'的年龄是'+person.age}}</p>
+        <h2>布尔数据表达式</h2>
+        <p>{{boolean?"is true":"is false"}}</p>
+        <h2>数组数据输出</h2>
+        <p>{{"数组的输出"+arr[2]}}</p>
+
+    </div>
+</body>
+</html>

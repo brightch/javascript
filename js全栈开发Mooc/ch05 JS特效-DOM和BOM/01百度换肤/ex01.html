@@ -35,14 +35,15 @@
         window.onload=function(){
             var box=document.getElementById('box');
             var lis=box.getElementsByTagName('img');
-            console.log(lis);
+        // <!-- console.log(lis.length); -->
             for(var i=0;i<lis.length;i++)
             {
                 var ali=lis[i];
                 ali.id=i+1;
                 lis[i].onclick=function()
                 {
-                    document.body.style.background='url(images/'+this.id+'.jpg'
+                    document.body.style.background='url(images/'+this.id+'.jpg)';
+                   //console.log('url(images/'+(i+1)+'.jpg)')
                 }
             }
 
